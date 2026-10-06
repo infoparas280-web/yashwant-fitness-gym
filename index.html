@@ -1,0 +1,845 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yashwant Fitness Club — Bibwewadi, Pune | Your Fitness. Your Power. Your Legacy.</title>
+<meta name="description" content="Yashwant Fitness Club, Bibwewadi, Pune — Strength training, personal coaching, and a supportive fitness community. Start your fitness journey today." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --bg-2:#111113;
+    --panel:#161618;
+    --charcoal:#1d1d20;
+    --line:#262629;
+    --text:#f5f5f6;
+    --muted:#9a9aa2;
+    --red:#ff2a2a;
+    --red-soft:#ff4d4d;
+  }
+  *{ -webkit-font-smoothing:antialiased; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
+  .font-display{ font-family:'Anton',sans-serif; letter-spacing:.01em; }
+  .text-red{ color:var(--red); }
+  .bg-red{ background:var(--red); }
+  .border-line{ border-color:var(--line); }
+
+  /* Hero */
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.12);
+    animation:heroZoom 18s ease-in-out infinite alternate;
+    will-change:transform;
+  }
+  @keyframes heroZoom{
+    0%{ transform:scale(1.12) translateY(0); }
+    100%{ transform:scale(1.22) translateY(-2%); }
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(10,10,11,.55) 0%, rgba(10,10,11,.7) 40%, rgba(10,10,11,.96) 100%),
+      radial-gradient(ellipse at 30% 40%, rgba(255,42,42,.18), transparent 55%);
+  }
+
+  /* Reveal */
+  .reveal{ opacity:0; transform:translateY(40px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal-stagger > *{ opacity:0; transform:translateY(30px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal-stagger.in > *{ opacity:1; transform:none; }
+  .reveal-stagger.in > *:nth-child(1){ transition-delay:.05s; }
+  .reveal-stagger.in > *:nth-child(2){ transition-delay:.15s; }
+  .reveal-stagger.in > *:nth-child(3){ transition-delay:.25s; }
+  .reveal-stagger.in > *:nth-child(4){ transition-delay:.35s; }
+  .reveal-stagger.in > *:nth-child(5){ transition-delay:.45s; }
+  .reveal-stagger.in > *:nth-child(6){ transition-delay:.55s; }
+
+  /* Word reveal */
+  .word{ display:inline-block; opacity:0; transform:translateY(60%); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .word.in{ opacity:1; transform:none; }
+
+  /* Buttons */
+  .btn-primary{
+    background:var(--red);
+    color:#fff;
+    padding:1rem 1.75rem;
+    border-radius:2px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    transition:.3s;
+    box-shadow:0 10px 30px -10px rgba(255,42,42,.6);
+    display:inline-flex; align-items:center; gap:.6rem;
+  }
+  .btn-primary:hover{ background:var(--red-soft); transform:translateY(-2px); box-shadow:0 16px 40px -12px rgba(255,42,42,.8); }
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,.25);
+    color:#fff;
+    padding:1rem 1.75rem;
+    border-radius:2px;
+    font-weight:600;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    transition:.3s;
+    backdrop-filter:blur(6px);
+    display:inline-flex; align-items:center; gap:.6rem;
+  }
+  .btn-ghost:hover{ border-color:#fff; background:rgba(255,255,255,.06); transform:translateY(-2px); }
+
+  /* Scroll indicator */
+  .scroll-ind{
+    width:26px; height:42px;
+    border:2px solid rgba(255,255,255,.45);
+    border-radius:14px;
+    position:relative;
+  }
+  .scroll-ind::after{
+    content:''; position:absolute; left:50%; top:8px;
+    width:3px; height:8px; background:#fff; border-radius:2px;
+    transform:translateX(-50%);
+    animation:scrolly 1.6s infinite;
+  }
+  @keyframes scrolly{
+    0%{ opacity:0; transform:translate(-50%,0); }
+    30%{ opacity:1; }
+    100%{ opacity:0; transform:translate(-50%,16px); }
+  }
+
+  /* Glass card */
+  .glass{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+
+  /* Cards 3D tilt */
+  .tilt{ transform-style:preserve-3d; transition:transform .25s ease, box-shadow .4s ease; will-change:transform; }
+  .tilt .tilt-layer{ transform:translateZ(40px); }
+
+  /* Membership featured */
+  .featured-glow{
+    box-shadow: 0 0 0 1px rgba(255,42,42,.4), 0 30px 70px -20px rgba(255,42,42,.35);
+  }
+  .ribbon{
+    background:var(--red);
+    color:#fff;
+    font-size:.7rem;
+    letter-spacing:.2em;
+    font-weight:700;
+    padding:.35rem .8rem;
+    text-transform:uppercase;
+  }
+
+  /* Before/After */
+  .ba{ position:relative; overflow:hidden; user-select:none; cursor:ew-resize; }
+  .ba img{ display:block; width:100%; height:100%; object-fit:cover; pointer-events:none; }
+  .ba .after{ position:absolute; inset:0; clip-path:inset(0 0 0 50%); }
+  .ba .handle{
+    position:absolute; top:0; bottom:0; left:50%; width:3px; background:#fff;
+    transform:translateX(-50%);
+    box-shadow:0 0 20px rgba(255,42,42,.8);
+  }
+  .ba .handle::after{
+    content:''; position:absolute; top:50%; left:50%;
+    width:44px; height:44px; border-radius:50%;
+    background:#fff; transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(255,42,42,.6);
+    background-image:radial-gradient(circle at center, #fff 60%, #ff2a2a 61%);
+  }
+
+  /* Marquee */
+  .marquee{ display:flex; gap:3rem; animation:marq 28s linear infinite; }
+  @keyframes marq{ to{ transform:translateX(-50%); } }
+
+  /* WhatsApp float */
+  .wa-float{
+    position:fixed; right:20px; bottom:20px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:28px;
+    box-shadow:0 10px 30px -8px rgba(37,211,102,.6), 0 0 0 0 rgba(37,211,102,.5);
+    animation:waPulse 2.5s infinite;
+    transition:transform .3s ease;
+  }
+  .wa-float:hover{ transform:scale(1.08); }
+  @keyframes waPulse{
+    0%{ box-shadow:0 10px 30px -8px rgba(37,211,102,.6), 0 0 0 0 rgba(37,211,102,.5); }
+    70%{ box-shadow:0 10px 30px -8px rgba(37,211,102,.6), 0 0 0 18px rgba(37,211,102,0); }
+    100%{ box-shadow:0 10px 30px -8px rgba(37,211,102,.6), 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  /* Nav scroll state */
+  .nav-scrolled{ background:rgba(10,10,11,.85); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+  .nav-link{ position:relative; }
+  .nav-link::after{
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--red);
+    transition:width .3s ease;
+  }
+  .nav-link:hover::after{ width:100%; }
+
+  /* Stats counter */
+  .stat-num{ font-family:'Anton',sans-serif; font-size:clamp(2.5rem,5vw,4rem); line-height:1; }
+
+  /* Section heading */
+  .eyebrow{ letter-spacing:.3em; font-size:.7rem; text-transform:uppercase; color:var(--red); font-weight:700; }
+
+  /* Carousel */
+  .ts-track{ display:flex; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+  .ts-card{ flex:0 0 100%; padding:0 .5rem; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.2); transition:.3s; cursor:pointer; }
+  .dot.active{ background:var(--red); width:28px; border-radius:4px; }
+
+  /* Mobile menu */
+  .mobile-menu{ transform:translateX(100%); transition:transform .4s cubic-bezier(.2,.7,.2,1); }
+  .mobile-menu.open{ transform:translateX(0); }
+
+  /* Form */
+  .field{
+    width:100%; background:rgba(255,255,255,.04); border:1px solid var(--line);
+    color:#fff; padding:.85rem 1rem; border-radius:2px; font-size:.95rem; transition:.3s;
+  }
+  .field:focus{ outline:none; border-color:var(--red); background:rgba(255,255,255,.06); }
+  .field::placeholder{ color:var(--muted); }
+  label.lbl{ font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+
+  ::selection{ background:var(--red); color:#fff; }
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#0a0a0b; }
+  ::-webkit-scrollbar-thumb{ background:#262629; border-radius:6px; }
+  ::-webkit-scrollbar-thumb:hover{ background:#ff2a2a; }
+</style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919999999999?text=Hi%20Yashwant%20Fitness%20Club%2C%20I%20would%20like%20to%20enquire%20about%20memberships." target="_blank" class="wa-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-red flex items-center justify-center font-display text-2xl text-white">Y</div>
+      <div class="leading-none">
+        <div class="font-display text-lg tracking-wide">YASHWANT</div>
+        <div class="text-[10px] tracking-[.35em] text-gray-400 -mt-0.5">FITNESS CLUB</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-10 text-sm font-medium">
+      <a href="#about" class="nav-link text-gray-200 hover:text-white transition">About</a>
+      <a href="#programs" class="nav-link text-gray-200 hover:text-white transition">Programs</a>
+      <a href="#pricing" class="nav-link text-gray-200 hover:text-white transition">Membership</a>
+      <a href="#transform" class="nav-link text-gray-200 hover:text-white transition">Transformations</a>
+      <a href="#trainers" class="nav-link text-gray-200 hover:text-white transition">Trainers</a>
+      <a href="#visit" class="btn-primary !py-2.5 !px-5">Book a Visit</a>
+    </nav>
+    <button id="menuBtn" class="lg:hidden text-white text-2xl" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-black/95 lg:hidden flex flex-col p-8">
+  <div class="flex items-center justify-between mb-12">
+    <div class="font-display text-2xl">YASHWANT</div>
+    <button id="closeMenu" class="text-white text-3xl" aria-label="Close"><i class="fas fa-times"></i></button>
+  </div>
+  <nav class="flex flex-col gap-6 text-2xl font-display">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#programs" class="mobile-link">Programs</a>
+    <a href="#pricing" class="mobile-link">Membership</a>
+    <a href="#transform" class="mobile-link">Transformations</a>
+    <a href="#trainers" class="mobile-link">Trainers</a>
+    <a href="#visit" class="mobile-link text-red">Book a Visit</a>
+  </nav>
+  <div class="mt-auto text-sm text-gray-400">
+    <p>Shree Sant Eknath Nagar, Bibwewadi</p>
+    <p>Pune, Maharashtra 411037</p>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="relative h-screen min-h-[640px] flex items-center overflow-hidden">
+  <div class="hero-bg" data-parallax="0.4"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
+    <div class="max-w-4xl">
+      <div class="flex items-center gap-3 mb-6 reveal">
+        <span class="w-10 h-px bg-red"></span>
+        <span class="eyebrow">Bibwewadi • Pune</span>
+      </div>
+      <h1 class="font-display text-[14vw] leading-[.92] sm:text-7xl md:text-8xl lg:text-9xl mb-8" id="heroTitle">
+        <span class="block overflow-hidden"><span class="word">YOUR</span> <span class="word">FITNESS.</span></span>
+        <span class="block overflow-hidden"><span class="word">YOUR</span> <span class="word text-red">POWER.</span></span>
+        <span class="block overflow-hidden"><span class="word">YOUR</span> <span class="word">LEGACY.</span></span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-10 reveal leading-relaxed">
+        Stop waiting for Monday. Start building a stronger you today at Yashwant Fitness Club, Bibwewadi — where consistency meets a community that pushes you forward.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 reveal">
+        <a href="#visit" class="btn-primary">Start Your Fitness Journey <i class="fas fa-arrow-right text-xs"></i></a>
+        <a href="#pricing" class="btn-ghost">Explore Memberships</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+    <div class="scroll-ind"></div>
+    <span class="text-[10px] tracking-[.3em] text-gray-400 uppercase">Scroll</span>
+  </div>
+
+  <!-- Side meta -->
+  <div class="hidden lg:block absolute right-10 bottom-10 z-10 text-right">
+    <div class="text-[10px] tracking-[.3em] text-gray-400 uppercase mb-2">Google Rating</div>
+    <div class="flex items-center gap-2 justify-end">
+      <span class="font-display text-3xl">4.8</span>
+      <div class="text-red text-sm">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="border-y border-line py-5 overflow-hidden bg-[#0c0c0d]">
+  <div class="marquee whitespace-nowrap font-display text-3xl md:text-4xl text-gray-600">
+    <span>STRENGTH</span><span class="text-red">•</span>
+    <span>DISCIPLINE</span><span class="text-red">•</span>
+    <span>CONSISTENCY</span><span class="text-red">•</span>
+    <span>POWER</span><span class="text-red">•</span>
+    <span>COMMUNITY</span><span class="text-red">•</span>
+    <span>STRENGTH</span><span class="text-red">•</span>
+    <span>DISCIPLINE</span><span class="text-red">•</span>
+    <span>CONSISTENCY</span><span class="text-red">•</span>
+    <span>POWER</span><span class="text-red">•</span>
+    <span>COMMUNITY</span><span class="text-red">•</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-px bg-red"></span>
+          <span class="eyebrow">Welcome to the Club</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95] mb-8">
+          A gym that <span class="text-red">believes</span> in showing up — every single day.
+        </h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-6">
+          Yashwant Fitness Club in Bibwewadi, Pune is built on a simple idea: real transformation comes from consistency, supportive coaching, and a space that makes you want to come back. Whether it's your first session or your five-hundredth, you'll find clean equipment, focused members, and trainers who actually care about your form and progress.
+        </p>
+        <p class="text-gray-400 leading-relaxed mb-8">
+          From heavy strength training to guided beginner programs, every member gets an environment that respects their goals and their time. Cleanliness, equipment maintenance, and a no-judgement culture — that's what members tell us keeps them here.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 reveal-stagger">
+          <div>
+            <div class="stat-num text-red" data-count="500">0</div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Active Members</div>
+          </div>
+          <div>
+            <div class="stat-num" data-count="4.8" data-decimals="1">0</div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Google Rating</div>
+          </div>
+          <div>
+            <div class="stat-num" data-count="12">0</div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Expert Trainers</div>
+          </div>
+          <div>
+            <div class="stat-num" data-count="365">0</div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Days Open</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative reveal">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80" alt="Strength training at Yashwant Fitness Club" loading="lazy" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -left-6 glass p-6 max-w-xs hidden md:block">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-location-dot text-red"></i>
+            <span class="text-xs uppercase tracking-widest text-gray-400">Bibwewadi, Pune</span>
+          </div>
+          <p class="text-sm text-gray-300">Shree Sant Eknath Nagar — a convenient, welcoming location for members across Bibwewadi & nearby areas.</p>
+        </div>
+        <div class="absolute -top-6 -right-6 bg-red text-white px-5 py-4 hidden md:block">
+          <div class="font-display text-3xl leading-none">EST.</div>
+          <div class="text-xs tracking-widest mt-1">SINCE DAY ONE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="py-24 lg:py-32 bg-[#0c0c0d] border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-px bg-red"></span>
+          <span class="eyebrow">What We Offer</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95]">Programs built <br>for every level.</h2>
+      </div>
+      <p class="text-gray-400 max-w-md">From first-time lifters to seasoned athletes — every program is supervised, form-checked, and built around your goals.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger" id="programGrid">
+      <!-- cards injected by JS for tilt binding -->
+    </div>
+    <p class="text-xs text-gray-500 mt-8 italic">Programs are confirmed with the gym owner before publishing. Final offerings may be refined based on current schedules.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-16 reveal">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="w-10 h-px bg-red"></span>
+        <span class="eyebrow">Membership Plans</span>
+        <span class="w-10 h-px bg-red"></span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95]">Choose your commitment.<br><span class="text-red">Own your results.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger" id="pricingGrid"></div>
+    <p class="text-xs text-gray-500 mt-8 text-center italic">Prices shown are indicative and editable. Final pricing will be confirmed by the gym owner before publishing.</p>
+  </div>
+</section>
+
+<!-- TRANSFORMATIONS -->
+<section id="transform" class="py-24 lg:py-32 bg-[#0c0c0d] border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-px bg-red"></span>
+          <span class="eyebrow">Real Transformations</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95] mb-6">Drag to see the <span class="text-red">difference.</span></h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-8">
+          Every transformation here starts with a decision — and is sustained by the environment at Yashwant Fitness Club. Drag the slider to explore a typical member journey from day one to month six.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-4"><span class="w-8 h-8 bg-red/15 text-red flex items-center justify-center text-sm"><i class="fas fa-check"></i></span> Structured progressive overload programs</li>
+          <li class="flex items-center gap-4"><span class="w-8 h-8 bg-red/15 text-red flex items-center justify-center text-sm"><i class="fas fa-check"></i></span> Weekly check-ins & form reviews</li>
+          <li class="flex items-center gap-4"><span class="w-8 h-8 bg-red/15 text-red flex items-center justify-center text-sm"><i class="fas fa-check"></i></span> Member success stories shared only with approval</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="ba aspect-[4/5] max-w-md mx-auto" id="baSlider">
+          <img src="https://images.unsplash.com/photo-1584466977773-e625c54c4a03?auto=format&fit=crop&w=800&q=80" alt="Before" class="before" loading="lazy" />
+          <div class="after"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" alt="After" loading="lazy" /></div>
+          <div class="handle"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500 uppercase tracking-widest mt-4 max-w-md mx-auto">
+          <span>Before</span>
+          <span>After 6 Months</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-px bg-red"></span>
+          <span class="eyebrow">Meet the Coaches</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95]">Trainers who<br>actually coach.</h2>
+      </div>
+      <p class="text-gray-400 max-w-md">Verified profiles approved by the gym owner. Real names, real specialties, real accountability.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger" id="trainerGrid"></div>
+    <p class="text-xs text-gray-500 mt-8 italic">Trainer details shown here are placeholders and will be replaced with owner-approved information before going live.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 lg:py-32 bg-[#0c0c0d] border-y border-line">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-12 reveal">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="w-10 h-px bg-red"></span>
+        <span class="eyebrow">Member Voices</span>
+        <span class="w-10 h-px bg-red"></span>
+      </div>
+      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl">What our members say.</h2>
+    </div>
+
+    <div class="overflow-hidden reveal" id="tsCarousel">
+      <div class="ts-track" id="tsTrack">
+        <!-- testimonials injected -->
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 mt-10" id="tsDots"></div>
+  </div>
+</section>
+
+<!-- BOOK A VISIT -->
+<section id="visit" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-px bg-red"></span>
+          <span class="eyebrow">Book a Gym Visit</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[.95] mb-8">Walk in. Look around.<br><span class="text-red">Decide for yourself.</span></h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-10">Pick a date and time that works for you. Your enquiry goes straight to our team via WhatsApp — no spam, no callbacks you didn't ask for.</p>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-red/10 text-red flex items-center justify-center shrink-0"><i class="fas fa-location-dot"></i></div>
+            <div>
+              <div class="font-semibold mb-1">Location</div>
+              <p class="text-gray-400 text-sm">Shree Sant Eknath Nagar, Bibwewadi,<br>Pune, Maharashtra 411037</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-red/10 text-red flex items-center justify-center shrink-0"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="font-semibold mb-1">Operating Hours</div>
+              <p class="text-gray-400 text-sm">Mon – Sat: 5:00 AM – 10:00 PM<br>Sunday: 7:00 AM – 12:00 PM</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-red/10 text-red flex items-center justify-center shrink-0"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="font-semibold mb-1">Call / WhatsApp</div>
+              <p class="text-gray-400 text-sm">+91 99999 99999 <span class="text-gray-600">(editable)</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form id="bookingForm" class="glass p-8 lg:p-10 reveal">
+        <h3 class="font-display text-2xl mb-6">Request a Visit</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="lbl block mb-2">Full Name</label>
+            <input type="text" name="name" required class="field" placeholder="Your name" />
+          </div>
+          <div>
+            <label class="lbl block mb-2">Phone</label>
+            <input type="tel" name="phone" required class="field" placeholder="+91 ..." />
+          </div>
+          <div>
+            <label class="lbl block mb-2">Preferred Date</label>
+            <input type="date" name="date" required class="field" />
+          </div>
+          <div>
+            <label class="lbl block mb-2">Preferred Time</label>
+            <select name="time" required class="field">
+              <option value="">Select slot</option>
+              <option>Early Morning (5–8 AM)</option>
+              <option>Morning (8–11 AM)</option>
+              <option>Afternoon (11 AM–2 PM)</option>
+              <option>Evening (4–7 PM)</option>
+              <option>Night (7–10 PM)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="lbl block mb-2">Interest</label>
+            <select name="interest" class="field">
+              <option>General Membership Enquiry</option>
+              <option>Personal Training</option>
+              <option>Beginner Guidance</option>
+              <option>Strength & Weight Training</option>
+              <option>Form Guidance</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="lbl block mb-2">Message (optional)</label>
+            <textarea name="message" rows="3" class="field" placeholder="Anything you'd like us to know?"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary w-full justify-center mt-6">
+          <i class="fab fa-whatsapp text-lg"></i> Send Enquiry on WhatsApp
+        </button>
+        <p class="text-xs text-gray-500 mt-4 text-center">By submitting, you'll be redirected to WhatsApp with your enquiry pre-filled.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black border-t border-line pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-red flex items-center justify-center font-display text-2xl">Y</div>
+          <div>
+            <div class="font-display text-xl tracking-wide">YASHWANT FITNESS CLUB</div>
+            <div class="text-[10px] tracking-[.35em] text-gray-500 -mt-0.5">BIBBEWADI • PUNE</div>
+          </div>
+        </div>
+        <p class="text-gray-400 max-w-md leading-relaxed">A welcoming fitness destination in Bibwewadi focused on consistency, strength, and supportive training. Your fitness. Your power. Your legacy.</p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="w-10 h-10 border border-line flex items-center justify-center text-gray-400 hover:text-white hover:border-red transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 border border-line flex items-center justify-center text-gray-400 hover:text-white hover:border-red transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="w-10 h-10 border border-line flex items-center justify-center text-gray-400 hover:text-white hover:border-red transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/919999999999" target="_blank" class="w-10 h-10 border border-line flex items-center justify-center text-gray-400 hover:text-white hover:border-red transition" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-lg mb-5">Quick Links</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#programs" class="hover:text-white transition">Programs</a></li>
+          <li><a href="#pricing" class="hover:text-white transition">Membership</a></li>
+          <li><a href="#trainers" class="hover:text-white transition">Trainers</a></li>
+          <li><a href="#visit" class="hover:text-white transition">Book a Visit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg mb-5">Visit Us</h4>
+        <p class="text-sm text-gray-400 leading-relaxed mb-3">Shree Sant Eknath Nagar,<br>Bibwewadi, Pune,<br>Maharashtra 411037</p>
+        <a href="https://maps.google.com/?q=Bibwewadi+Pune+411037" target="_blank" class="text-red text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">Get Directions <i class="fas fa-arrow-right text-xs"></i></a>
+      </div>
+    </div>
+    <div class="border-t border-line pt-8 flex flex-col md:flex-row justify-between gap-4 text-xs text-gray-500">
+      <p>© <span id="year"></span> Yashwant Fitness Club. All rights reserved.</p>
+      <p>Designed & built for performance. Crafted with intent.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---------- Data ---------- */
+  const programs = [
+    { icon:'fa-dumbbell', title:'Strength & Weight Training', desc:'Free weights, compound lifts, and progressive overload programming for serious strength gains.' , img:'https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?auto=format&fit=crop&w=800&q=80'},
+    { icon:'fa-user-tie', title:'Personal Training', desc:'One-on-one coaching tailored to your goals, schedule, and current fitness level.', img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80'},
+    { icon:'fa-seedling', title:'Beginner Fitness Guidance', desc:'New to the gym? We ease you in with structured, low-intimidation starter plans.', img:'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80'},
+    { icon:'fa-heart-pulse', title:'General Fitness & Conditioning', desc:'Improve stamina, mobility, and overall conditioning with balanced routines.', img:'https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=800&q=80'},
+    { icon:'fa-person-walking', title:'Workout Form Guidance', desc:'Technique corrections and movement coaching to keep you safe and effective.', img:'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=80'},
+    { icon:'fa-bolt', title:'Performance Coaching', desc:'Sports-specific conditioning and athletic performance development.', img:'https://images.unsplash.com/photo-1526506118089-9926b9c12540?auto=format&fit=crop&w=800&q=80'},
+  ];
+
+  const pricing = [
+    { name:'Monthly', price:'₹1,500', duration:'30 Days', featured:false, benefits:['Full gym access','Locker & shower','Group classes','1 fitness assessment'] },
+    { name:'Quarterly', price:'₹4,000', duration:'90 Days', featured:false, benefits:['Everything in Monthly','3 fitness assessments','1 PT session free','Diet guidance basics'] },
+    { name:'Half-Yearly', price:'₹7,000', duration:'180 Days', featured:true, benefits:['Everything in Quarterly','6 fitness assessments','3 PT sessions free','Personalised workout plan','Priority trainer access'] },
+    { name:'Annual', price:'₹12,000', duration:'365 Days', featured:false, benefits:['Everything in Half-Yearly','12 fitness assessments','6 PT sessions free','Customised nutrition plan','Best value — save 33%'] },
+  ];
+
+  const trainers = [
+    { name:'Trainer Name 01', role:'Head Strength Coach', exp:'10+ yrs', img:'https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80' },
+    { name:'Trainer Name 02', role:'Personal Trainer', exp:'7 yrs', img:'https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80' },
+    { name:'Trainer Name 03', role:'Conditioning Specialist', exp:'6 yrs', img:'https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&q=80' },
+  ];
+
+  const testimonials = [
+    { name:'Member Name 01', text:'The equipment is always clean and the trainers actually correct your form. I've been coming for 8 months and I'm in the best shape of my life.', rating:5 },
+    { name:'Member Name 02', text:'As a beginner I was nervous, but the supportive environment here is real. No judgement, just guidance. Highly recommend for first-timers.', rating:5 },
+    { name:'Member Name 03', text:'Great location in Bibwewadi, never too crowded in the mornings, and the trainers push you just enough. Worth every rupee.', rating:5 },
+  ];
+
+  /* ---------- Render Programs ---------- */
+  const pg = document.getElementById('programGrid');
+  pg.innerHTML = programs.map(p => `
+    <article class="tilt group relative overflow-hidden bg-[#111113] border border-line">
+      <div class="relative aspect-[4/3] overflow-hidden">
+        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute top-4 left-4 w-12 h-12 bg-red flex items-center justify-center text-white text-lg tilt-layer"><i class="fas ${p.icon}"></i></div>
+      </div>
+      <div class="p-6 tilt-layer">
+        <h3 class="font-display text-2xl mb-3 group-hover:text-red transition">${p.title}</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">${p.desc}</p>
+      </div>
+      <div class="absolute top-0 left-0 w-full h-1 bg-red scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+    </article>
+  `).join('');
+
+  /* ---------- Render Pricing ---------- */
+  document.getElementById('pricingGrid').innerHTML = pricing.map(p => `
+    <div class="relative ${p.featured ? 'featured-glow bg-[#161618] border border-red/40 lg:-translate-y-4' : 'bg-[#111113] border border-line'} p-8 flex flex-col">
+      ${p.featured ? '<div class="ribbon absolute -top-3 left-1/2 -translate-x-1/2">Most Popular</div>' : ''}
+      <div class="mb-6">
+        <h3 class="font-display text-2xl mb-1">${p.name.toUpperCase()}</h3>
+        <p class="text-xs text-gray-500 tracking-widest uppercase">${p.duration}</p>
+      </div>
+      <div class="mb-8">
+        <span class="font-display text-5xl">${p.price}</span>
+      </div>
+      <ul class="space-y-3 mb-8 flex-1">
+        ${p.benefits.map(b => `<li class="flex items-start gap-3 text-sm text-gray-300"><span class="text-red mt-0.5"><i class="fas fa-check text-xs"></i></span> ${b}</li>`).join('')}
+      </ul>
+      <a href="#visit" class="${p.featured ? 'btn-primary' : 'btn-ghost'} w-full justify-center">Choose This Plan</a>
+    </div>
+  `).join('');
+
+  /* ---------- Render Trainers ---------- */
+  document.getElementById('trainerGrid').innerHTML = trainers.map(t => `
+    <article class="group relative overflow-hidden aspect-[3/4]">
+      <img src="${t.img}" alt="${t.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6">
+        <div class="text-xs tracking-widest text-red uppercase mb-1">${t.role} • ${t.exp}</div>
+        <h3 class="font-display text-2xl">${t.name}</h3>
+        <div class="flex gap-3 mt-3 opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0">
+          <a href="#visit" class="text-xs uppercase tracking-widest text-gray-300 hover:text-white border-b border-red pb-0.5">Book a session</a>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  /* ---------- Testimonials ---------- */
+  const tsTrack = document.getElementById('tsTrack');
+  tsTrack.innerHTML = testimonials.map(t => `
+    <div class="ts-card">
+      <div class="glass p-8 md:p-12">
+        <div class="text-red text-lg mb-5">${'★'.repeat(t.rating)}</div>
+        <p class="text-xl md:text-2xl leading-relaxed mb-8 font-light">"${t.text}"</p>
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-red/20 text-red flex items-center justify-center font-display text-lg">${t.name.charAt(0)}</div>
+          <div>
+            <div class="font-semibold">${t.name}</div>
+            <div class="text-xs text-gray-500">Verified Member</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const tsDots = document.getElementById('tsDots');
+  tsDots.innerHTML = testimonials.map((_,i) => `<div class="dot ${i===0?'active':''}" data-i="${i}"></div>`).join('');
+
+  let tsIndex = 0;
+  function goTs(i){
+    tsIndex = (i + testimonials.length) % testimonials.length;
+    tsTrack.style.transform = `translateX(-${tsIndex*100}%)`;
+    document.querySelectorAll('#tsDots .dot').forEach((d,j)=>d.classList.toggle('active', j===tsIndex));
+  }
+  tsDots.addEventListener('click', e => {
+    if(e.target.dataset.i) goTs(parseInt(e.target.dataset.i));
+  });
+  setInterval(()=>goTs(tsIndex+1), 6000);
+
+  /* ---------- Reveal on scroll ---------- */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.id === 'heroTitle' || e.target.classList.contains('reveal-stagger')) return;
+      }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  /* Hero word reveal */
+  setTimeout(()=>{
+    document.querySelectorAll('#heroTitle .word').forEach((w,i)=>{
+      setTimeout(()=>w.classList.add('in'), i*120);
+    });
+  }, 300);
+
+  /* ---------- Stat counter ---------- */
+  const statIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = parseFloat(el.dataset.count);
+        const dec = parseInt(el.dataset.decimals||0);
+        let cur = 0;
+        const step = target/60;
+        const tick = ()=>{
+          cur += step;
+          if(cur >= target){ el.textContent = target.toFixed(dec); }
+          else { el.textContent = cur.toFixed(dec); requestAnimationFrame(tick); }
+        };
+        tick();
+        statIO.unobserve(el);
+      }
+    });
+  }, { threshold:.5 });
+  document.querySelectorAll('[data-count]').forEach(el => statIO.observe(el));
+
+  /* ---------- Parallax ---------- */
+  const heroBg = document.querySelector('.hero-bg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if(y < window.innerHeight){
+      heroBg.style.transform = `scale(1.12) translateY(${y*0.4}px)`;
+    }
+    document.getElementById('nav').classList.toggle('nav-scrolled', y > 30);
+  });
+
+  /* ---------- 3D Tilt ---------- */
+  document.querySelectorAll('.tilt').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      el.style.transform = `perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'perspective(900px) rotateY(0) rotateX(0) translateY(0)';
+    });
+  });
+
+  /* ---------- Before/After slider ---------- */
+  const ba = document.getElementById('baSlider');
+  let dragging = false;
+  function setBA(x){
+    const r = ba.getBoundingClientRect();
+    let pct = ((x - r.left)/r.width)*100;
+    pct = Math.max(0, Math.min(100, pct));
+    ba.querySelector('.after').style.clipPath = `inset(0 0 0 ${pct}%)`;
+    ba.querySelector('.handle').style.left = `${pct}%`;
+  }
+  ba.addEventListener('mousedown', e=>{ dragging=true; setBA(e.clientX); });
+  window.addEventListener('mousemove', e=>{ if(dragging) setBA(e.clientX); });
+  window.addEventListener('mouseup', ()=> dragging=false);
+  ba.addEventListener('touchstart', e=>{ dragging=true; setBA(e.touches[0].clientX); }, {passive:true});
+  ba.addEventListener('touchmove', e=>{ if(dragging) setBA(e.touches[0].clientX); }, {passive:true});
+  ba.addEventListener('touchend', ()=> dragging=false);
+
+  /* ---------- Mobile menu ---------- */
+  const menu = document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click', ()=> menu.classList.add('open'));
+  document.getElementById('closeMenu').addEventListener('click', ()=> menu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', ()=> menu.classList.remove('open')));
+
+  /* ---------- Booking form -> WhatsApp ---------- */
+  document.getElementById('bookingForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    const msg = `*New Gym Visit Request — Yashwant Fitness Club*%0A%0A*Name:* ${f.name.value}%0A*Phone:* ${f.phone.value}%0A*Date:* ${f.date.value}%0A*Time:* ${f.time.value}%0A*Interest:* ${f.interest.value}%0A*Message:* ${f.message.value || '—'}`;
+    window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+  });
+
+  /* Year */
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
